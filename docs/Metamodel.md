@@ -124,7 +124,7 @@ Experience
 		company: "Google"
 		startDate: 02-2020
 		endDate: 01-2022
-		tags: [CLOUD, JAVA, DEVELOPER]
+		tags: ["CLOUD", "JAVA", "DEVELOPER"]
 	
 Experience
 	language: "ES"
@@ -133,7 +133,7 @@ Experience
 		company: "Google"
 		startDate: 02-2020
 		endDate: 01-2022
-		tags: [CLOUD, JAVA, DESARROLLADOR]
+		tags: ["CLOUD", "JAVA", "DESARROLLADOR"]
 	
 Projects
 	language: "EN"
