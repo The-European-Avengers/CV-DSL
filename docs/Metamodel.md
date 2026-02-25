@@ -48,6 +48,9 @@ classDiagram
 		+ name : String
 		+ email : String
 		+ telephoneNumber : String
+		+ direction : String
+		+ country : String
+		+ city : String
 	}
 	
 	class Rules {
@@ -103,6 +106,14 @@ classDiagram
 	classDef default fill:#D6EAF8,stroke:#2980B9,stroke-width:2px,color:#1B4F72;
 ```
 
+## Customization 
+You will define your profile and then the user will be able to create the CV by including specific sections following some filters
+
+
+- By date: Filter by a specific date or a range of dates.
+- By tag: Filter by specific tags associated with the sections.
+- By language: Filter by the language of the sections.
+- By section type: Include or exclude specific types of sections (e.g., Experience, Projects, Education).
 
 
 ## Possible DSL
@@ -170,8 +181,7 @@ Languages
 	
 Customization
 	include Profile where language EN
-	exclude Education where filter
+	include Education where filter
 	include Projects where filter 
-	exclude Skills
 	
 ```	
