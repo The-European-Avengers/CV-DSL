@@ -45,7 +45,7 @@ my_cv = Profile("Lucas Gonzalez CV") \
 
 * **Execution Process:** The "execution" of the metamodel instance is triggered by the terminal `build()` method in the `Profile` class.
 * **Steps of Execution:**
-* **Semantic Filtering:** The `build()` method first checks if a `customizer` object is linked to the profile. If present, it invokes the `apply_filters()` method from the `Customization` class.
-* **Rule Processing:** The `apply_filters()` method analyzes defined rules (such as `LANGUAGE` or `TAGS`) and modifies the profile's `sections` list to include only what was requested (e.g., only English sections or projects with the "WEB" tag).
-* **Structured Output:** Finally, the program iterates through the remaining metamodel objects and prints the CV to the console in a structured visual format, displaying the user data and the detailed content of each validated section.
+    * **Semantic Filtering:** The `build()` method first checks if a `customizer` object is linked to the profile. If present, it invokes the `apply_filters()` method from the `Customization` class.
+    * **Rule Processing:** The `apply_filters()` method analyzes defined rules (such as `LANGUAGE` or `TAGS`) and modifies the profile's `sections` list to include only what was requested (e.g., only English sections or projects with the "WEB" tag).
+    * **Structured Output:** Finally, the program iterates through the remaining metamodel objects and prints the CV to the console in a structured visual format, displaying the user data and the detailed content of each validated section.
 
