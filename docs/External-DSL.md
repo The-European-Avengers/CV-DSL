@@ -22,14 +22,14 @@ Experience
 	title: "Software Engineer"
 		description: ["Implemented an internal tool for analyitics"]
 		company: "Google"
-		startDate: 02-2020
-		endDate: 01-2022
+		startDate: "02-2020"
+		endDate: "01-2022"
 		tags: ["CLOUD", "JAVA", "DEVELOPER"]
     title: "Software Engineer2"
 		description: ["Implemented an website for a restaurant"]
 		company: "McDonald's"
-		startDate: 02-2022
-		endDate: 01-2023
+		startDate: "02-2022"
+		endDate: "01-2023"
 		tags: ["WEB", "JAVASCRIPT", "DEVELOPER"]
 	
 Experience
@@ -37,14 +37,14 @@ Experience
 	title: "Ingeniero de Software"
 		description: ["Implementé una herramienta interna para análisis"]
 		company: "Google"
-		startDate: 02-2020
-		endDate: 01-2022
+		startDate: "02-2020"
+		endDate: "01-2022"
 		tags: ["CLOUD", "JAVA", "DESARROLLADOR"]
     title: "Ingeniero de Software2"
         description: ["Implementé un sitio web para un restaurante"]
         company: "McDonald's"
-        startDate: 02-2022
-        endDate: 01-2023
+        startDate: "02-2022"
+        endDate: "01-2023"
         tags: ["WEB", "JAVASCRIPT", "DESARROLLADOR"]
 	
 Projects
@@ -63,7 +63,7 @@ Education
 	language: "EN"
 	title: "Master in Software Engineering"
         institution: "SDU"
-        graduationDate: 2018
+        graduationDate: "2018"
         country: "Denmark"
         tags: ["MASTER", "UNIVERSITY"]
 
@@ -82,30 +82,49 @@ Languages
 	
 Customization
 	include Profile where language EN
-	include Education where tags include UNIVERSITY
-	include Projects where tags include WEB
-    include Experience where startDate after 01-01-2021
+	include Education where tags include "UNIVERSITY"
+	include Projects where tags include "WEB"
+    include Experience where startDate after "01-01-2021"
 	
 ```	
 
 ## Syntax as an EBNF Grammar
 
 ```
-Profile ::= "Metadata" Metadata "Userdata" Userdata Sections
-Metadata ::= "style:" String "font:" String "imgPath:" String
-Userdata ::= "name:" String "email:" String "telephoneNumber:" String "direction:" String "city:" String "country:" String
-Sections ::= (Experience | Projects | Education | Skills | Interests | Languages)+
-Experience ::= "Experience" "language:" String ("title:" String "description:" "[" String ("," String)* "]" "company:" String "startDate:" Date "endDate:" Date "tags:" "[" String ("," String)* "]")+
-Projects ::= "Projects" "language:" String ("title:" String "description:" "[" String ("," String)* "]" "technologies:" "[" String ("," String)* "]" "link:" String "tags:" "[" String ("," String)* "]")+
-Education ::= "Education" "language:" String ("title:" String "institution:" String "graduationDate:" Date "country:" String "tags:" "[" String ("," String)* "]")+
-Skills ::= "Skills" "language:" String ("title:" String "tags:" "[" String ("," String)* "]")+
-Interests ::= "Interests" "language:" String "tags:" "[" String ("," String)* "]"
-Languages ::= "Languages" "language:" String "tags:" "[" String ("," String)* "]"
-Customization ::= "Customization" CustomizationRules
-CustomizationRules ::= "include Profile where language" String ("include" SectionType "where" Filter)+
-SectionType ::= "Experience" | "Projects" | "Education" | "Skills" | "Interests" | "Languages"
-Filter ::=  "tags include" String | "startDate after" Date | "endDate before" Date
-Date ::= String
-String ::= '"' [^"]* '"'
-```
+Profile        ::= Metadata Userdata Sections Customization 
 
+Metadata       ::= "Metadata" "style:" String "font:" String "imgPath:" String
+Userdata       ::= "Userdata" "name:" String "email:" String "telephoneNumber:" String "direction:" String "city:" String "country:" String
+
+Sections       ::= (Experience | Projects | Education | Skills | Interests | Languages)+
+
+Experience     ::= "Experience" "language:" String (Job)+
+Job            ::= "title:" String "description:" StringList "company:" String "startDate:" Date "endDate:" Date "tags:" StringList
+
+Projects       ::= "Projects" "language:" String (Project)+
+Project        ::= "title:" String "description:" StringList "technologies:" StringList "link:" String "tags:" StringList
+
+Education      ::= "Education" "language:" String (Degree)*
+Degree         ::= "title:" String "institution:" String "graduationDate:" Date "country:" String "tags:" StringList
+
+Skills         ::= "Skills" "language:" String (Skill)+
+Skill          ::= "title:" String "tags:" StringList
+
+Interests      ::= "Interests" "language:" String "tags:" StringList
+Languages      ::= "Languages" "language:" String "tags:" StringList
+
+Customization  ::= "Customization" "include Profile where language" String  Rule*
+
+Rule           ::= "include" SectionType "where" Filter
+
+SectionType    ::= "Experience" | "Projects" | "Education" | "Skills" | "Interests" | "Languages"
+
+Filter         ::= GeneralFilter | TemporalFilter
+
+GeneralFilter  ::= "tags include" String
+TemporalFilter ::= ("startDate after" Date | "endDate before" Date)  (* This filter can only be applied to Experience and Education *)
+
+StringList     ::= "[" String ("," String)* "]"
+Date           ::= String
+String         ::= '"' [^"]* '"'
+```
