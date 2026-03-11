@@ -1,0 +1,112 @@
+grammar org.xtext.example.resume.Resume with org.eclipse.xtext.common.Terminals
+
+generate resume "http://www.xtext.org/example/resume/Resume"
+
+Profile:
+    metadata=Metadata
+    userdata=Userdata
+    sections+=Section+
+    customization=Customization
+;
+
+Metadata:
+    'Metadata' 'style:' style=STRING 'font:' font=STRING 'imgPath:' imgPath=STRING
+;
+
+Userdata:
+    'Userdata' 'name:' name=STRING 'email:' email=STRING 'telephoneNumber:' telephoneNumber=STRING 'direction:' direction=STRING 'city:' city=STRING 'country:' country=STRING
+;
+
+Section:
+    Experience | Projects | Education | Skills | Interests | Languages
+;
+
+Experience:
+    'Experience' 'language:' language=STRING jobs+=Job+
+;
+
+Job:
+    'title:' title=STRING 
+    'description:' description=StringList 
+    'company:' company=STRING 
+    'startDate:' startDate=Date 
+    'endDate:' endDate=Date 
+    'tags:' tags=StringList
+;
+
+Projects:
+    'Projects' 'language:' language=STRING projects+=Project+
+;
+
+Project:
+    'title:' title=STRING 
+    'description:' description=StringList 
+    'technologies:' technologies=StringList 
+    'link:' link=STRING 
+    'tags:' tags=StringList
+;
+
+Education:
+    'Education' 'language:' language=STRING degrees+=Degree*
+;
+
+Degree:
+    'title:' title=STRING 
+    'institution:' institution=STRING 
+    'graduationDate:' graduationDate=Date 
+    'country:' country=STRING 
+    'tags:' tags=StringList
+;
+
+Skills:
+    'Skills' 'language:' language=STRING skills+=Skill+
+;
+
+Skill:
+    'title:' title=STRING 'tags:' tags=StringList
+;
+
+Interests:
+    'Interests' 'language:' language=STRING 'tags:' tags=StringList
+;
+
+Languages:
+    'Languages' 'language:' language=STRING 'tags:' tags=StringList
+;
+
+Customization:
+    'Customization' 'include' 'Profile' 'where' 'language' language=STRING rules+=Rule*
+;
+
+Rule:
+    'include' sectionType=SectionType 'where' filter=Filter
+;
+
+enum SectionType:
+    EXPERIENCE='Experience' | 
+    PROJECTS='Projects' | 
+    EDUCATION='Education' | 
+    SKILLS='Skills' | 
+    INTERESTS='Interests' | 
+    LANGUAGES='Languages'
+;
+
+Filter:
+    GeneralFilter | TemporalFilter
+;
+
+GeneralFilter:
+    'tags' 'include' tag=STRING
+;
+
+TemporalFilter:
+    ('startDate' 'after' startDate=Date) | ('endDate' 'before' endDate=Date)
+;
+
+StringList:
+    '[' values+=STRING (',' values+=STRING)* ']'
+;
+
+Date:
+    STRING
+;
