@@ -6,6 +6,7 @@ package org.xtext.example.resume.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.EnumLiteralDeclaration;
@@ -223,13 +224,14 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final RuleCall cSkillsParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cInterestsParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cLanguagesParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cMetricsParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//Section:
-		//    Experience | Projects | Education | Skills | Interests | Languages
+		//    Experience | Projects | Education | Skills | Interests | Languages | Metrics
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Experience | Projects | Education | Skills | Interests | Languages
+		//Experience | Projects | Education | Skills | Interests | Languages | Metrics
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Experience
@@ -249,6 +251,9 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		
 		//Languages
 		public RuleCall getLanguagesParserRuleCall_5() { return cLanguagesParserRuleCall_5; }
+		
+		//Metrics
+		public RuleCall getMetricsParserRuleCall_6() { return cMetricsParserRuleCall_6; }
 	}
 	public class ExperienceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.Experience");
@@ -764,6 +769,156 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//StringList
 		public RuleCall getTagsStringListParserRuleCall_4_0() { return cTagsStringListParserRuleCall_4_0; }
 	}
+	public class MetricsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.Metrics");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMetricsKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLanguageKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLanguageAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLanguageSTRINGTerminalRuleCall_2_0 = (RuleCall)cLanguageAssignment_2.eContents().get(0);
+		private final Assignment cMetricsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMetricsMetricParserRuleCall_3_0 = (RuleCall)cMetricsAssignment_3.eContents().get(0);
+		
+		//Metrics:
+		//    'Metrics' 'language:' language=STRING metrics+=Metric+
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Metrics' 'language:' language=STRING metrics+=Metric+
+		public Group getGroup() { return cGroup; }
+		
+		//'Metrics'
+		public Keyword getMetricsKeyword_0() { return cMetricsKeyword_0; }
+		
+		//'language:'
+		public Keyword getLanguageKeyword_1() { return cLanguageKeyword_1; }
+		
+		//language=STRING
+		public Assignment getLanguageAssignment_2() { return cLanguageAssignment_2; }
+		
+		//STRING
+		public RuleCall getLanguageSTRINGTerminalRuleCall_2_0() { return cLanguageSTRINGTerminalRuleCall_2_0; }
+		
+		//metrics+=Metric+
+		public Assignment getMetricsAssignment_3() { return cMetricsAssignment_3; }
+		
+		//Metric
+		public RuleCall getMetricsMetricParserRuleCall_3_0() { return cMetricsMetricParserRuleCall_3_0; }
+	}
+	public class MetricElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.Metric");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMetricKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cExpressionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cExpressionExpressionParserRuleCall_3_0 = (RuleCall)cExpressionAssignment_3.eContents().get(0);
+		
+		//Metric:
+		//    'Metric' name=STRING '=' expression=Expression
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Metric' name=STRING '=' expression=Expression
+		public Group getGroup() { return cGroup; }
+		
+		//'Metric'
+		public Keyword getMetricKeyword_0() { return cMetricKeyword_0; }
+		
+		//name=STRING
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
+		
+		//expression=Expression
+		public Assignment getExpressionAssignment_3() { return cExpressionAssignment_3; }
+		
+		//Expression
+		public RuleCall getExpressionExpressionParserRuleCall_3_0() { return cExpressionExpressionParserRuleCall_3_0; }
+	}
+	public class ExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.Expression");
+		private final RuleCall cSubtractionParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//Expression:
+		//    Subtraction
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Subtraction
+		public RuleCall getSubtractionParserRuleCall() { return cSubtractionParserRuleCall; }
+	}
+	public class SubtractionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.Subtraction");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cNumberLiteralParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cSubtractionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightNumberLiteralParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Subtraction returns Expression:
+		//    NumberLiteral (
+		//        {Subtraction.left=current} '-' right=NumberLiteral
+		//    )*
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//NumberLiteral (
+		//    {Subtraction.left=current} '-' right=NumberLiteral
+		//)*
+		public Group getGroup() { return cGroup; }
+		
+		//NumberLiteral
+		public RuleCall getNumberLiteralParserRuleCall_0() { return cNumberLiteralParserRuleCall_0; }
+		
+		//(
+		//       {Subtraction.left=current} '-' right=NumberLiteral
+		//   )*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Subtraction.left=current}
+		public Action getSubtractionLeftAction_1_0() { return cSubtractionLeftAction_1_0; }
+		
+		//'-'
+		public Keyword getHyphenMinusKeyword_1_1() { return cHyphenMinusKeyword_1_1; }
+		
+		//right=NumberLiteral
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//NumberLiteral
+		public RuleCall getRightNumberLiteralParserRuleCall_1_2_0() { return cRightNumberLiteralParserRuleCall_1_2_0; }
+	}
+	public class NumberLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.NumberLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cNumberLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//NumberLiteral returns Expression:
+		//    {NumberLiteral} value=INT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{NumberLiteral} value=INT
+		public Group getGroup() { return cGroup; }
+		
+		//{NumberLiteral}
+		public Action getNumberLiteralAction_0() { return cNumberLiteralAction_0; }
+		
+		//value=INT
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_1_0() { return cValueINTTerminalRuleCall_1_0; }
+	}
 	public class CustomizationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.Customization");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -853,13 +1008,14 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cGeneralFilterParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cTemporalFilterParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cAllFilterParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//Filter:
-		//    GeneralFilter | TemporalFilter
+		//    GeneralFilter | TemporalFilter | AllFilter
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//GeneralFilter | TemporalFilter
+		//GeneralFilter | TemporalFilter | AllFilter
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//GeneralFilter
@@ -867,6 +1023,9 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		
 		//TemporalFilter
 		public RuleCall getTemporalFilterParserRuleCall_1() { return cTemporalFilterParserRuleCall_1; }
+		
+		//AllFilter
+		public RuleCall getAllFilterParserRuleCall_2() { return cAllFilterParserRuleCall_2; }
 	}
 	public class GeneralFilterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.GeneralFilter");
@@ -948,6 +1107,26 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//Date
 		public RuleCall getEndDateDateParserRuleCall_1_2_0() { return cEndDateDateParserRuleCall_1_2_0; }
 	}
+	public class AllFilterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.AllFilter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cAllFilterAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cAllKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//AllFilter:
+		//    {AllFilter} 'all'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{AllFilter} 'all'
+		public Group getGroup() { return cGroup; }
+		
+		//{AllFilter}
+		public Action getAllFilterAction_0() { return cAllFilterAction_0; }
+		
+		//'all'
+		public Keyword getAllKeyword_1() { return cAllKeyword_1; }
+	}
 	public class StringListElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.resume.Resume.StringList");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1020,6 +1199,8 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final Keyword cINTERESTSInterestsKeyword_4_0 = (Keyword)cINTERESTSEnumLiteralDeclaration_4.eContents().get(0);
 		private final EnumLiteralDeclaration cLANGUAGESEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
 		private final Keyword cLANGUAGESLanguagesKeyword_5_0 = (Keyword)cLANGUAGESEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cMETRICSEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cMETRICSMetricsKeyword_6_0 = (Keyword)cMETRICSEnumLiteralDeclaration_6.eContents().get(0);
 		
 		//enum SectionType:
 		//    EXPERIENCE='Experience' |
@@ -1027,7 +1208,8 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//    EDUCATION='Education' |
 		//    SKILLS='Skills' |
 		//    INTERESTS='Interests' |
-		//    LANGUAGES='Languages'
+		//    LANGUAGES='Languages' |
+		//    METRICS='Metrics'
 		//;
 		public EnumRule getRule() { return rule; }
 		
@@ -1036,7 +1218,8 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//EDUCATION='Education' |
 		//SKILLS='Skills' |
 		//INTERESTS='Interests' |
-		//LANGUAGES='Languages'
+		//LANGUAGES='Languages' |
+		//METRICS='Metrics'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//EXPERIENCE='Experience'
@@ -1074,6 +1257,12 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		
 		//'Languages'
 		public Keyword getLANGUAGESLanguagesKeyword_5_0() { return cLANGUAGESLanguagesKeyword_5_0; }
+		
+		//METRICS='Metrics'
+		public EnumLiteralDeclaration getMETRICSEnumLiteralDeclaration_6() { return cMETRICSEnumLiteralDeclaration_6; }
+		
+		//'Metrics'
+		public Keyword getMETRICSMetricsKeyword_6_0() { return cMETRICSMetricsKeyword_6_0; }
 	}
 	
 	private final ProfileElements pProfile;
@@ -1090,12 +1279,18 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	private final SkillElements pSkill;
 	private final InterestsElements pInterests;
 	private final LanguagesElements pLanguages;
+	private final MetricsElements pMetrics;
+	private final MetricElements pMetric;
+	private final ExpressionElements pExpression;
+	private final SubtractionElements pSubtraction;
+	private final NumberLiteralElements pNumberLiteral;
 	private final CustomizationElements pCustomization;
 	private final RuleElements pRule;
 	private final SectionTypeElements eSectionType;
 	private final FilterElements pFilter;
 	private final GeneralFilterElements pGeneralFilter;
 	private final TemporalFilterElements pTemporalFilter;
+	private final AllFilterElements pAllFilter;
 	private final StringListElements pStringList;
 	private final DateElements pDate;
 	
@@ -1122,12 +1317,18 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		this.pSkill = new SkillElements();
 		this.pInterests = new InterestsElements();
 		this.pLanguages = new LanguagesElements();
+		this.pMetrics = new MetricsElements();
+		this.pMetric = new MetricElements();
+		this.pExpression = new ExpressionElements();
+		this.pSubtraction = new SubtractionElements();
+		this.pNumberLiteral = new NumberLiteralElements();
 		this.pCustomization = new CustomizationElements();
 		this.pRule = new RuleElements();
 		this.eSectionType = new SectionTypeElements();
 		this.pFilter = new FilterElements();
 		this.pGeneralFilter = new GeneralFilterElements();
 		this.pTemporalFilter = new TemporalFilterElements();
+		this.pAllFilter = new AllFilterElements();
 		this.pStringList = new StringListElements();
 		this.pDate = new DateElements();
 	}
@@ -1196,7 +1397,7 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	}
 	
 	//Section:
-	//    Experience | Projects | Education | Skills | Interests | Languages
+	//    Experience | Projects | Education | Skills | Interests | Languages | Metrics
 	//;
 	public SectionElements getSectionAccess() {
 		return pSection;
@@ -1329,6 +1530,63 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		return getLanguagesAccess().getRule();
 	}
 	
+	//Metrics:
+	//    'Metrics' 'language:' language=STRING metrics+=Metric+
+	//;
+	public MetricsElements getMetricsAccess() {
+		return pMetrics;
+	}
+	
+	public ParserRule getMetricsRule() {
+		return getMetricsAccess().getRule();
+	}
+	
+	//Metric:
+	//    'Metric' name=STRING '=' expression=Expression
+	//;
+	public MetricElements getMetricAccess() {
+		return pMetric;
+	}
+	
+	public ParserRule getMetricRule() {
+		return getMetricAccess().getRule();
+	}
+	
+	//Expression:
+	//    Subtraction
+	//;
+	public ExpressionElements getExpressionAccess() {
+		return pExpression;
+	}
+	
+	public ParserRule getExpressionRule() {
+		return getExpressionAccess().getRule();
+	}
+	
+	//Subtraction returns Expression:
+	//    NumberLiteral (
+	//        {Subtraction.left=current} '-' right=NumberLiteral
+	//    )*
+	//;
+	public SubtractionElements getSubtractionAccess() {
+		return pSubtraction;
+	}
+	
+	public ParserRule getSubtractionRule() {
+		return getSubtractionAccess().getRule();
+	}
+	
+	//NumberLiteral returns Expression:
+	//    {NumberLiteral} value=INT
+	//;
+	public NumberLiteralElements getNumberLiteralAccess() {
+		return pNumberLiteral;
+	}
+	
+	public ParserRule getNumberLiteralRule() {
+		return getNumberLiteralAccess().getRule();
+	}
+	
 	//Customization:
 	//    'Customization' 'include' 'Profile' 'where' 'language' language=STRING rules+=Rule*
 	//;
@@ -1357,7 +1615,8 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	//    EDUCATION='Education' |
 	//    SKILLS='Skills' |
 	//    INTERESTS='Interests' |
-	//    LANGUAGES='Languages'
+	//    LANGUAGES='Languages' |
+	//    METRICS='Metrics'
 	//;
 	public SectionTypeElements getSectionTypeAccess() {
 		return eSectionType;
@@ -1368,7 +1627,7 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	}
 	
 	//Filter:
-	//    GeneralFilter | TemporalFilter
+	//    GeneralFilter | TemporalFilter | AllFilter
 	//;
 	public FilterElements getFilterAccess() {
 		return pFilter;
@@ -1398,6 +1657,17 @@ public class ResumeGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	
 	public ParserRule getTemporalFilterRule() {
 		return getTemporalFilterAccess().getRule();
+	}
+	
+	//AllFilter:
+	//    {AllFilter} 'all'
+	//;
+	public AllFilterElements getAllFilterAccess() {
+		return pAllFilter;
+	}
+	
+	public ParserRule getAllFilterRule() {
+		return getAllFilterAccess().getRule();
 	}
 	
 	//StringList:

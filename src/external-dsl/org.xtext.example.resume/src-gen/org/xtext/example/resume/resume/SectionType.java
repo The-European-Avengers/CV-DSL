@@ -78,7 +78,17 @@ public enum SectionType implements Enumerator
    * @generated
    * @ordered
    */
-  LANGUAGES(5, "LANGUAGES", "Languages");
+  LANGUAGES(5, "LANGUAGES", "Languages"),
+
+  /**
+   * The '<em><b>METRICS</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #METRICS_VALUE
+   * @generated
+   * @ordered
+   */
+  METRICS(6, "METRICS", "Metrics");
 
   /**
    * The '<em><b>EXPERIENCE</b></em>' literal value.
@@ -147,6 +157,17 @@ public enum SectionType implements Enumerator
   public static final int LANGUAGES_VALUE = 5;
 
   /**
+   * The '<em><b>METRICS</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #METRICS
+   * @model literal="Metrics"
+   * @generated
+   * @ordered
+   */
+  public static final int METRICS_VALUE = 6;
+
+  /**
    * An array of all the '<em><b>Section Type</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -161,6 +182,7 @@ public enum SectionType implements Enumerator
       SKILLS,
       INTERESTS,
       LANGUAGES,
+      METRICS,
     };
 
   /**
@@ -231,6 +253,7 @@ public enum SectionType implements Enumerator
       case SKILLS_VALUE: return SKILLS;
       case INTERESTS_VALUE: return INTERESTS;
       case LANGUAGES_VALUE: return LANGUAGES;
+      case METRICS_VALUE: return METRICS;
     }
     return null;
   }

@@ -11,16 +11,21 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.xtext.example.resume.resume.AllFilter;
 import org.xtext.example.resume.resume.Customization;
 import org.xtext.example.resume.resume.Degree;
 import org.xtext.example.resume.resume.Education;
 import org.xtext.example.resume.resume.Experience;
+import org.xtext.example.resume.resume.Expression;
 import org.xtext.example.resume.resume.Filter;
 import org.xtext.example.resume.resume.GeneralFilter;
 import org.xtext.example.resume.resume.Interests;
 import org.xtext.example.resume.resume.Job;
 import org.xtext.example.resume.resume.Languages;
 import org.xtext.example.resume.resume.Metadata;
+import org.xtext.example.resume.resume.Metric;
+import org.xtext.example.resume.resume.Metrics;
+import org.xtext.example.resume.resume.NumberLiteral;
 import org.xtext.example.resume.resume.Profile;
 import org.xtext.example.resume.resume.Project;
 import org.xtext.example.resume.resume.Projects;
@@ -32,6 +37,7 @@ import org.xtext.example.resume.resume.SectionType;
 import org.xtext.example.resume.resume.Skill;
 import org.xtext.example.resume.resume.Skills;
 import org.xtext.example.resume.resume.StringList;
+import org.xtext.example.resume.resume.Subtraction;
 import org.xtext.example.resume.resume.TemporalFilter;
 import org.xtext.example.resume.resume.Userdata;
 
@@ -146,6 +152,27 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass metricsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass metricEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass customizationEClass = null;
 
   /**
@@ -181,7 +208,28 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass allFilterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass stringListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass subtractionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numberLiteralEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -830,6 +878,72 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
    * @generated
    */
   @Override
+  public EClass getMetrics()
+  {
+    return metricsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMetrics_Metrics()
+  {
+    return (EReference)metricsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMetric()
+  {
+    return metricEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMetric_Name()
+  {
+    return (EAttribute)metricEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMetric_Expression()
+  {
+    return (EReference)metricEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpression()
+  {
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getCustomization()
   {
     return customizationEClass;
@@ -962,6 +1076,17 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
    * @generated
    */
   @Override
+  public EClass getAllFilter()
+  {
+    return allFilterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getStringList()
   {
     return stringListEClass;
@@ -976,6 +1101,61 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
   public EAttribute getStringList_Values()
   {
     return (EAttribute)stringListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSubtraction()
+  {
+    return subtractionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSubtraction_Left()
+  {
+    return (EReference)subtractionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSubtraction_Right()
+  {
+    return (EReference)subtractionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNumberLiteral()
+  {
+    return numberLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNumberLiteral_Value()
+  {
+    return (EAttribute)numberLiteralEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1086,6 +1266,15 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
     languagesEClass = createEClass(LANGUAGES);
     createEReference(languagesEClass, LANGUAGES__TAGS);
 
+    metricsEClass = createEClass(METRICS);
+    createEReference(metricsEClass, METRICS__METRICS);
+
+    metricEClass = createEClass(METRIC);
+    createEAttribute(metricEClass, METRIC__NAME);
+    createEReference(metricEClass, METRIC__EXPRESSION);
+
+    expressionEClass = createEClass(EXPRESSION);
+
     customizationEClass = createEClass(CUSTOMIZATION);
     createEAttribute(customizationEClass, CUSTOMIZATION__LANGUAGE);
     createEReference(customizationEClass, CUSTOMIZATION__RULES);
@@ -1103,8 +1292,17 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
     createEAttribute(temporalFilterEClass, TEMPORAL_FILTER__START_DATE);
     createEAttribute(temporalFilterEClass, TEMPORAL_FILTER__END_DATE);
 
+    allFilterEClass = createEClass(ALL_FILTER);
+
     stringListEClass = createEClass(STRING_LIST);
     createEAttribute(stringListEClass, STRING_LIST__VALUES);
+
+    subtractionEClass = createEClass(SUBTRACTION);
+    createEReference(subtractionEClass, SUBTRACTION__LEFT);
+    createEReference(subtractionEClass, SUBTRACTION__RIGHT);
+
+    numberLiteralEClass = createEClass(NUMBER_LITERAL);
+    createEAttribute(numberLiteralEClass, NUMBER_LITERAL__VALUE);
 
     // Create enums
     sectionTypeEEnum = createEEnum(SECTION_TYPE);
@@ -1145,8 +1343,12 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
     skillsEClass.getESuperTypes().add(this.getSection());
     interestsEClass.getESuperTypes().add(this.getSection());
     languagesEClass.getESuperTypes().add(this.getSection());
+    metricsEClass.getESuperTypes().add(this.getSection());
     generalFilterEClass.getESuperTypes().add(this.getFilter());
     temporalFilterEClass.getESuperTypes().add(this.getFilter());
+    allFilterEClass.getESuperTypes().add(this.getFilter());
+    subtractionEClass.getESuperTypes().add(this.getExpression());
+    numberLiteralEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(profileEClass, Profile.class, "Profile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1215,6 +1417,15 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
     initEClass(languagesEClass, Languages.class, "Languages", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLanguages_Tags(), this.getStringList(), null, "tags", null, 0, 1, Languages.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(metricsEClass, Metrics.class, "Metrics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMetrics_Metrics(), this.getMetric(), null, "metrics", null, 0, -1, Metrics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(metricEClass, Metric.class, "Metric", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMetric_Name(), ecorePackage.getEString(), "name", null, 0, 1, Metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetric_Expression(), this.getExpression(), null, "expression", null, 0, 1, Metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(customizationEClass, Customization.class, "Customization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCustomization_Language(), ecorePackage.getEString(), "language", null, 0, 1, Customization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCustomization_Rules(), this.getRule(), null, "rules", null, 0, -1, Customization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1232,8 +1443,17 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
     initEAttribute(getTemporalFilter_StartDate(), ecorePackage.getEString(), "startDate", null, 0, 1, TemporalFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTemporalFilter_EndDate(), ecorePackage.getEString(), "endDate", null, 0, 1, TemporalFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(allFilterEClass, AllFilter.class, "AllFilter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(stringListEClass, StringList.class, "StringList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStringList_Values(), ecorePackage.getEString(), "values", null, 0, -1, StringList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(subtractionEClass, Subtraction.class, "Subtraction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSubtraction_Left(), this.getExpression(), null, "left", null, 0, 1, Subtraction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubtraction_Right(), this.getExpression(), null, "right", null, 0, 1, Subtraction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numberLiteralEClass, NumberLiteral.class, "NumberLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNumberLiteral_Value(), ecorePackage.getEInt(), "value", null, 0, 1, NumberLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(sectionTypeEEnum, SectionType.class, "SectionType");
@@ -1243,6 +1463,7 @@ public class ResumePackageImpl extends EPackageImpl implements ResumePackage
     addEEnumLiteral(sectionTypeEEnum, SectionType.SKILLS);
     addEEnumLiteral(sectionTypeEEnum, SectionType.INTERESTS);
     addEEnumLiteral(sectionTypeEEnum, SectionType.LANGUAGES);
+    addEEnumLiteral(sectionTypeEEnum, SectionType.METRICS);
 
     // Create resource
     createResource(eNS_URI);

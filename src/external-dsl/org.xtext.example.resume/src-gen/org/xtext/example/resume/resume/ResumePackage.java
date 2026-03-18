@@ -721,6 +721,99 @@ public interface ResumePackage extends EPackage
   int LANGUAGES_FEATURE_COUNT = SECTION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.resume.resume.impl.MetricsImpl <em>Metrics</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.resume.resume.impl.MetricsImpl
+   * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getMetrics()
+   * @generated
+   */
+  int METRICS = 14;
+
+  /**
+   * The feature id for the '<em><b>Language</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICS__LANGUAGE = SECTION__LANGUAGE;
+
+  /**
+   * The feature id for the '<em><b>Metrics</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICS__METRICS = SECTION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Metrics</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICS_FEATURE_COUNT = SECTION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.resume.resume.impl.MetricImpl <em>Metric</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.resume.resume.impl.MetricImpl
+   * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getMetric()
+   * @generated
+   */
+  int METRIC = 15;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRIC__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRIC__EXPRESSION = 1;
+
+  /**
+   * The number of structural features of the '<em>Metric</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRIC_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.resume.resume.impl.ExpressionImpl <em>Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.resume.resume.impl.ExpressionImpl
+   * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getExpression()
+   * @generated
+   */
+  int EXPRESSION = 16;
+
+  /**
+   * The number of structural features of the '<em>Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.resume.resume.impl.CustomizationImpl <em>Customization</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -728,7 +821,7 @@ public interface ResumePackage extends EPackage
    * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getCustomization()
    * @generated
    */
-  int CUSTOMIZATION = 14;
+  int CUSTOMIZATION = 17;
 
   /**
    * The feature id for the '<em><b>Language</b></em>' attribute.
@@ -765,7 +858,7 @@ public interface ResumePackage extends EPackage
    * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getRule()
    * @generated
    */
-  int RULE = 15;
+  int RULE = 18;
 
   /**
    * The feature id for the '<em><b>Section Type</b></em>' attribute.
@@ -802,7 +895,7 @@ public interface ResumePackage extends EPackage
    * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getFilter()
    * @generated
    */
-  int FILTER = 16;
+  int FILTER = 19;
 
   /**
    * The number of structural features of the '<em>Filter</em>' class.
@@ -821,7 +914,7 @@ public interface ResumePackage extends EPackage
    * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getGeneralFilter()
    * @generated
    */
-  int GENERAL_FILTER = 17;
+  int GENERAL_FILTER = 20;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -849,7 +942,7 @@ public interface ResumePackage extends EPackage
    * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getTemporalFilter()
    * @generated
    */
-  int TEMPORAL_FILTER = 18;
+  int TEMPORAL_FILTER = 21;
 
   /**
    * The feature id for the '<em><b>Start Date</b></em>' attribute.
@@ -879,6 +972,25 @@ public interface ResumePackage extends EPackage
   int TEMPORAL_FILTER_FEATURE_COUNT = FILTER_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.resume.resume.impl.AllFilterImpl <em>All Filter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.resume.resume.impl.AllFilterImpl
+   * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getAllFilter()
+   * @generated
+   */
+  int ALL_FILTER = 22;
+
+  /**
+   * The number of structural features of the '<em>All Filter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALL_FILTER_FEATURE_COUNT = FILTER_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.resume.resume.impl.StringListImpl <em>String List</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -886,7 +998,7 @@ public interface ResumePackage extends EPackage
    * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getStringList()
    * @generated
    */
-  int STRING_LIST = 19;
+  int STRING_LIST = 23;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' attribute list.
@@ -907,6 +1019,71 @@ public interface ResumePackage extends EPackage
   int STRING_LIST_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.resume.resume.impl.SubtractionImpl <em>Subtraction</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.resume.resume.impl.SubtractionImpl
+   * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getSubtraction()
+   * @generated
+   */
+  int SUBTRACTION = 24;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBTRACTION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBTRACTION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Subtraction</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBTRACTION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.resume.resume.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.resume.resume.impl.NumberLiteralImpl
+   * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getNumberLiteral()
+   * @generated
+   */
+  int NUMBER_LITERAL = 25;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Number Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.resume.resume.SectionType <em>Section Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -914,7 +1091,7 @@ public interface ResumePackage extends EPackage
    * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getSectionType()
    * @generated
    */
-  int SECTION_TYPE = 20;
+  int SECTION_TYPE = 26;
 
 
   /**
@@ -1476,6 +1653,69 @@ public interface ResumePackage extends EPackage
   EReference getLanguages_Tags();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.example.resume.resume.Metrics <em>Metrics</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Metrics</em>'.
+   * @see org.xtext.example.resume.resume.Metrics
+   * @generated
+   */
+  EClass getMetrics();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.resume.resume.Metrics#getMetrics <em>Metrics</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Metrics</em>'.
+   * @see org.xtext.example.resume.resume.Metrics#getMetrics()
+   * @see #getMetrics()
+   * @generated
+   */
+  EReference getMetrics_Metrics();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.resume.resume.Metric <em>Metric</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Metric</em>'.
+   * @see org.xtext.example.resume.resume.Metric
+   * @generated
+   */
+  EClass getMetric();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.resume.resume.Metric#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.resume.resume.Metric#getName()
+   * @see #getMetric()
+   * @generated
+   */
+  EAttribute getMetric_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.resume.resume.Metric#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see org.xtext.example.resume.resume.Metric#getExpression()
+   * @see #getMetric()
+   * @generated
+   */
+  EReference getMetric_Expression();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.resume.resume.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see org.xtext.example.resume.resume.Expression
+   * @generated
+   */
+  EClass getExpression();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.resume.resume.Customization <em>Customization</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1603,6 +1843,16 @@ public interface ResumePackage extends EPackage
   EAttribute getTemporalFilter_EndDate();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.example.resume.resume.AllFilter <em>All Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>All Filter</em>'.
+   * @see org.xtext.example.resume.resume.AllFilter
+   * @generated
+   */
+  EClass getAllFilter();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.resume.resume.StringList <em>String List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1622,6 +1872,59 @@ public interface ResumePackage extends EPackage
    * @generated
    */
   EAttribute getStringList_Values();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.resume.resume.Subtraction <em>Subtraction</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Subtraction</em>'.
+   * @see org.xtext.example.resume.resume.Subtraction
+   * @generated
+   */
+  EClass getSubtraction();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.resume.resume.Subtraction#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.xtext.example.resume.resume.Subtraction#getLeft()
+   * @see #getSubtraction()
+   * @generated
+   */
+  EReference getSubtraction_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.resume.resume.Subtraction#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see org.xtext.example.resume.resume.Subtraction#getRight()
+   * @see #getSubtraction()
+   * @generated
+   */
+  EReference getSubtraction_Right();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.resume.resume.NumberLiteral <em>Number Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Number Literal</em>'.
+   * @see org.xtext.example.resume.resume.NumberLiteral
+   * @generated
+   */
+  EClass getNumberLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.resume.resume.NumberLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.xtext.example.resume.resume.NumberLiteral#getValue()
+   * @see #getNumberLiteral()
+   * @generated
+   */
+  EAttribute getNumberLiteral_Value();
 
   /**
    * Returns the meta object for enum '{@link org.xtext.example.resume.resume.SectionType <em>Section Type</em>}'.
@@ -2101,6 +2404,60 @@ public interface ResumePackage extends EPackage
     EReference LANGUAGES__TAGS = eINSTANCE.getLanguages_Tags();
 
     /**
+     * The meta object literal for the '{@link org.xtext.example.resume.resume.impl.MetricsImpl <em>Metrics</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.resume.resume.impl.MetricsImpl
+     * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getMetrics()
+     * @generated
+     */
+    EClass METRICS = eINSTANCE.getMetrics();
+
+    /**
+     * The meta object literal for the '<em><b>Metrics</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METRICS__METRICS = eINSTANCE.getMetrics_Metrics();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.resume.resume.impl.MetricImpl <em>Metric</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.resume.resume.impl.MetricImpl
+     * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getMetric()
+     * @generated
+     */
+    EClass METRIC = eINSTANCE.getMetric();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METRIC__NAME = eINSTANCE.getMetric_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METRIC__EXPRESSION = eINSTANCE.getMetric_Expression();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.resume.resume.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.resume.resume.impl.ExpressionImpl
+     * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.resume.resume.impl.CustomizationImpl <em>Customization</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2207,6 +2564,16 @@ public interface ResumePackage extends EPackage
     EAttribute TEMPORAL_FILTER__END_DATE = eINSTANCE.getTemporalFilter_EndDate();
 
     /**
+     * The meta object literal for the '{@link org.xtext.example.resume.resume.impl.AllFilterImpl <em>All Filter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.resume.resume.impl.AllFilterImpl
+     * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getAllFilter()
+     * @generated
+     */
+    EClass ALL_FILTER = eINSTANCE.getAllFilter();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.resume.resume.impl.StringListImpl <em>String List</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2223,6 +2590,50 @@ public interface ResumePackage extends EPackage
      * @generated
      */
     EAttribute STRING_LIST__VALUES = eINSTANCE.getStringList_Values();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.resume.resume.impl.SubtractionImpl <em>Subtraction</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.resume.resume.impl.SubtractionImpl
+     * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getSubtraction()
+     * @generated
+     */
+    EClass SUBTRACTION = eINSTANCE.getSubtraction();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBTRACTION__LEFT = eINSTANCE.getSubtraction_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBTRACTION__RIGHT = eINSTANCE.getSubtraction_Right();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.resume.resume.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.resume.resume.impl.NumberLiteralImpl
+     * @see org.xtext.example.resume.resume.impl.ResumePackageImpl#getNumberLiteral()
+     * @generated
+     */
+    EClass NUMBER_LITERAL = eINSTANCE.getNumberLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NUMBER_LITERAL__VALUE = eINSTANCE.getNumberLiteral_Value();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.resume.resume.SectionType <em>Section Type</em>}' enum.

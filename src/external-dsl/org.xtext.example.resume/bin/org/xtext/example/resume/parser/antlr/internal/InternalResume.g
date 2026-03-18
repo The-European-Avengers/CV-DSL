@@ -469,6 +469,15 @@ ruleSection returns [EObject current=null]
 			$current = $this_Languages_5.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getSectionAccess().getMetricsParserRuleCall_6());
+		}
+		this_Metrics_6=ruleMetrics
+		{
+			$current = $this_Metrics_6.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -1346,6 +1355,262 @@ ruleLanguages returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleMetrics
+entryRuleMetrics returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMetricsRule()); }
+	iv_ruleMetrics=ruleMetrics
+	{ $current=$iv_ruleMetrics.current; }
+	EOF;
+
+// Rule Metrics
+ruleMetrics returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Metrics'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getMetricsAccess().getMetricsKeyword_0());
+		}
+		otherlv_1='language:'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getMetricsAccess().getLanguageKeyword_1());
+		}
+		(
+			(
+				lv_language_2_0=RULE_STRING
+				{
+					newLeafNode(lv_language_2_0, grammarAccess.getMetricsAccess().getLanguageSTRINGTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMetricsRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"language",
+						lv_language_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMetricsAccess().getMetricsMetricParserRuleCall_3_0());
+				}
+				lv_metrics_3_0=ruleMetric
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMetricsRule());
+					}
+					add(
+						$current,
+						"metrics",
+						lv_metrics_3_0,
+						"org.xtext.example.resume.Resume.Metric");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+	)
+;
+
+// Entry rule entryRuleMetric
+entryRuleMetric returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMetricRule()); }
+	iv_ruleMetric=ruleMetric
+	{ $current=$iv_ruleMetric.current; }
+	EOF;
+
+// Rule Metric
+ruleMetric returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Metric'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getMetricAccess().getMetricKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_STRING
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getMetricAccess().getNameSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMetricRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_2='='
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMetricAccess().getEqualsSignKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMetricAccess().getExpressionExpressionParserRuleCall_3_0());
+				}
+				lv_expression_3_0=ruleExpression
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMetricRule());
+					}
+					set(
+						$current,
+						"expression",
+						lv_expression_3_0,
+						"org.xtext.example.resume.Resume.Expression");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleExpression
+entryRuleExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExpressionRule()); }
+	iv_ruleExpression=ruleExpression
+	{ $current=$iv_ruleExpression.current; }
+	EOF;
+
+// Rule Expression
+ruleExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	{
+		newCompositeNode(grammarAccess.getExpressionAccess().getSubtractionParserRuleCall());
+	}
+	this_Subtraction_0=ruleSubtraction
+	{
+		$current = $this_Subtraction_0.current;
+		afterParserOrEnumRuleCall();
+	}
+;
+
+// Entry rule entryRuleSubtraction
+entryRuleSubtraction returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSubtractionRule()); }
+	iv_ruleSubtraction=ruleSubtraction
+	{ $current=$iv_ruleSubtraction.current; }
+	EOF;
+
+// Rule Subtraction
+ruleSubtraction returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getSubtractionAccess().getNumberLiteralParserRuleCall_0());
+		}
+		this_NumberLiteral_0=ruleNumberLiteral
+		{
+			$current = $this_NumberLiteral_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getSubtractionAccess().getSubtractionLeftAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2='-'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getSubtractionAccess().getHyphenMinusKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getSubtractionAccess().getRightNumberLiteralParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleNumberLiteral
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSubtractionRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"org.xtext.example.resume.Resume.NumberLiteral");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleNumberLiteral
+entryRuleNumberLiteral returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getNumberLiteralRule()); }
+	iv_ruleNumberLiteral=ruleNumberLiteral
+	{ $current=$iv_ruleNumberLiteral.current; }
+	EOF;
+
+// Rule NumberLiteral
+ruleNumberLiteral returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getNumberLiteralAccess().getNumberLiteralAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				lv_value_1_0=RULE_INT
+				{
+					newLeafNode(lv_value_1_0, grammarAccess.getNumberLiteralAccess().getValueINTTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getNumberLiteralRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"value",
+						lv_value_1_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+	)
+;
+
 // Entry rule entryRuleCustomization
 entryRuleCustomization returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getCustomizationRule()); }
@@ -1520,6 +1785,15 @@ ruleFilter returns [EObject current=null]
 			$current = $this_TemporalFilter_1.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getFilterAccess().getAllFilterParserRuleCall_2());
+		}
+		this_AllFilter_2=ruleAllFilter
+		{
+			$current = $this_AllFilter_2.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -1643,6 +1917,36 @@ ruleTemporalFilter returns [EObject current=null]
 				)
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleAllFilter
+entryRuleAllFilter returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAllFilterRule()); }
+	iv_ruleAllFilter=ruleAllFilter
+	{ $current=$iv_ruleAllFilter.current; }
+	EOF;
+
+// Rule AllFilter
+ruleAllFilter returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getAllFilterAccess().getAllFilterAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='all'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getAllFilterAccess().getAllKeyword_1());
+		}
 	)
 ;
 
@@ -1793,6 +2097,14 @@ ruleSectionType returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getSectionTypeAccess().getLANGUAGESEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_5, grammarAccess.getSectionTypeAccess().getLANGUAGESEnumLiteralDeclaration_5());
+			}
+		)
+		    |
+		(
+			enumLiteral_6='Metrics'
+			{
+				$current = grammarAccess.getSectionTypeAccess().getMETRICSEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_6, grammarAccess.getSectionTypeAccess().getMETRICSEnumLiteralDeclaration_6());
 			}
 		)
 	)

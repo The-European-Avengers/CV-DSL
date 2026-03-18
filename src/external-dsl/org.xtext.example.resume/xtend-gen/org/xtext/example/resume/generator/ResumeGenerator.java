@@ -11,18 +11,22 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.XbaseGenerated;
+import org.xtext.example.resume.resume.AllFilter;
 import org.xtext.example.resume.resume.Customization;
 import org.xtext.example.resume.resume.Degree;
 import org.xtext.example.resume.resume.Education;
 import org.xtext.example.resume.resume.Experience;
+import org.xtext.example.resume.resume.Expression;
 import org.xtext.example.resume.resume.Filter;
 import org.xtext.example.resume.resume.GeneralFilter;
 import org.xtext.example.resume.resume.Interests;
 import org.xtext.example.resume.resume.Job;
 import org.xtext.example.resume.resume.Languages;
+import org.xtext.example.resume.resume.Metric;
+import org.xtext.example.resume.resume.Metrics;
+import org.xtext.example.resume.resume.NumberLiteral;
 import org.xtext.example.resume.resume.Profile;
 import org.xtext.example.resume.resume.Project;
 import org.xtext.example.resume.resume.Projects;
@@ -31,6 +35,8 @@ import org.xtext.example.resume.resume.Section;
 import org.xtext.example.resume.resume.Skill;
 import org.xtext.example.resume.resume.Skills;
 import org.xtext.example.resume.resume.StringList;
+import org.xtext.example.resume.resume.Subtraction;
+import org.xtext.example.resume.resume.TemporalFilter;
 
 /**
  * Generates code from your model files on save.
@@ -43,7 +49,6 @@ public class ResumeGenerator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     EObject _head = IterableExtensions.<EObject>head(resource.getContents());
     final Profile profile = ((Profile) _head);
-    InputOutput.<String>println(">>> ¡INTENTANDO GENERAR EL CV! <<<");
     if ((profile != null)) {
       fsa.generateFile("generated_cv.py", this.compile(profile));
     }
@@ -51,20 +56,16 @@ public class ResumeGenerator extends AbstractGenerator {
 
   public CharSequence compile(final Profile p) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("# --- Importaciones de tus clases de Python ---");
     _builder.newLine();
-    _builder.append("from Models import Profile, Metadata, UserData, Experience, Projects, Education, Skills, Interests, Languages, Customization");
+    _builder.append("from Models import Profile, Customization");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("# --- Inicialización ---");
     _builder.newLine();
     _builder.append("cv = Profile(\"");
     String _name = p.getUserdata().getName();
     _builder.append(_name);
     _builder.append("\")");
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("# --- Metadata y Userdata ---");
     _builder.newLine();
     _builder.append("cv.with_metadata(\"");
     String _style = p.getMetadata().getStyle();
@@ -118,29 +119,34 @@ public class ResumeGenerator extends AbstractGenerator {
     _builder.append(")");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("    ");
-    _builder.append("# --- Secciones ---");
     _builder.newLine();
     {
       EList<Section> _sections = p.getSections();
       for(final Section section : _sections) {
-        _builder.append("    ");
         CharSequence _compileSection = this.compileSection(section);
-        _builder.append(_compileSection, "    ");
+        _builder.append(_compileSection);
         _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append("    ");
     _builder.newLine();
-    _builder.append("    ");
-    _builder.append("# --- Personalización (Filtros) ---");
     _builder.newLine();
     {
       Customization _customization = p.getCustomization();
       boolean _tripleNotEquals = (_customization != null);
       if (_tripleNotEquals) {
-        _builder.append("    ");
         _builder.append("customizer = Customization(cv)");
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.newLine();
+        _builder.append("# 1. El primer filtro define el lenguaje general del CV de forma única");
+        _builder.newLine();
+        _builder.append("customizer.add_filter(\"Profile\", \"LANGUAGE\", \"");
+        String _language = p.getCustomization().getLanguage();
+        _builder.append(_language);
+        _builder.append("\")");
+        _builder.newLineIfNotEmpty();
+        _builder.newLine();
+        _builder.append("# 2. Iteramos para incluir las secciones que se desean con los filtros definidos");
         _builder.newLine();
         {
           EList<Rule> _rules = p.getCustomization().getRules();
@@ -159,33 +165,58 @@ public class ResumeGenerator extends AbstractGenerator {
                 _builder.newLineIfNotEmpty();
               }
             }
-          }
-        }
-        _builder.append("    ");
-        _builder.append("# Aplicamos el filtro de lenguaje base para todas las secciones incluidas");
-        _builder.newLine();
-        {
-          EList<Rule> _rules_1 = p.getCustomization().getRules();
-          for(final Rule rule_1 : _rules_1) {
-            _builder.append("    ");
-            _builder.append("customizer.add_filter(\"");
-            String _literal_1 = rule_1.getSectionType().getLiteral();
-            _builder.append(_literal_1, "    ");
-            _builder.append("\", \"LANGUAGE\", \"");
-            String _language = p.getCustomization().getLanguage();
-            _builder.append(_language, "    ");
-            _builder.append("\")");
-            _builder.newLineIfNotEmpty();
+            {
+              Filter _filter_2 = rule.getFilter();
+              if ((_filter_2 instanceof TemporalFilter)) {
+                Filter _filter_3 = rule.getFilter();
+                final TemporalFilter tFilter = ((TemporalFilter) _filter_3);
+                _builder.newLineIfNotEmpty();
+                {
+                  String _startDate = tFilter.getStartDate();
+                  boolean _tripleNotEquals_1 = (_startDate != null);
+                  if (_tripleNotEquals_1) {
+                    _builder.append("customizer.add_filter(\"");
+                    String _literal_1 = rule.getSectionType().getLiteral();
+                    _builder.append(_literal_1);
+                    _builder.append("\", \"TEMPORAL_AFTER\", \"");
+                    String _replace = tFilter.getStartDate().replace("\"", "");
+                    _builder.append(_replace);
+                    _builder.append("\")");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+                {
+                  String _endDate = tFilter.getEndDate();
+                  boolean _tripleNotEquals_2 = (_endDate != null);
+                  if (_tripleNotEquals_2) {
+                    _builder.append("customizer.add_filter(\"");
+                    String _literal_2 = rule.getSectionType().getLiteral();
+                    _builder.append(_literal_2);
+                    _builder.append("\", \"TEMPORAL_BEFORE\", \"");
+                    String _replace_1 = tFilter.getEndDate().replace("\"", "");
+                    _builder.append(_replace_1);
+                    _builder.append("\")");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              }
+            }
+            _builder.newLine();
+            {
+              Filter _filter_4 = rule.getFilter();
+              if ((_filter_4 instanceof AllFilter)) {
+                _builder.append("customizer.add_filter(\"");
+                String _literal_3 = rule.getSectionType().getLiteral();
+                _builder.append(_literal_3);
+                _builder.append("\", \"ALL\", \"None\")");
+                _builder.newLineIfNotEmpty();
+              }
+            }
           }
         }
       }
     }
-    _builder.append("    ");
     _builder.newLine();
-    _builder.append("    ");
-    _builder.append("# --- Construcción final ---");
-    _builder.newLine();
-    _builder.append("    ");
     _builder.append("cv.build()");
     _builder.newLine();
     return _builder;
@@ -207,13 +238,13 @@ public class ResumeGenerator extends AbstractGenerator {
         _builder.append("\", \"");
         String _company = job.getCompany();
         _builder.append(_company);
-        _builder.append("\", \"");
+        _builder.append("\", ");
         String _startDate = job.getStartDate();
         _builder.append(_startDate);
-        _builder.append("\", \"");
+        _builder.append(", ");
         String _endDate = job.getEndDate();
         _builder.append(_endDate);
-        _builder.append("\", ");
+        _builder.append(", ");
         CharSequence _compileList = this.compileList(job.getDescription());
         _builder.append(_compileList);
         _builder.append(", ");
@@ -274,10 +305,10 @@ public class ResumeGenerator extends AbstractGenerator {
         _builder.append("\", \"");
         String _institution = d.getInstitution();
         _builder.append(_institution);
-        _builder.append("\", \"");
+        _builder.append("\", ");
         String _graduationDate = d.getGraduationDate();
         _builder.append(_graduationDate);
-        _builder.append("\", \"");
+        _builder.append(", \"");
         String _country = d.getCountry();
         _builder.append(_country);
         _builder.append("\", ");
@@ -339,6 +370,43 @@ public class ResumeGenerator extends AbstractGenerator {
     return _builder;
   }
 
+  protected CharSequence _compileSection(final Metrics met) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("metrics = cv.add_metrics(\"");
+    String _language = met.getLanguage();
+    _builder.append(_language);
+    _builder.append("\")");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Metric> _metrics = met.getMetrics();
+      for(final Metric m : _metrics) {
+        _builder.append("metrics.add_metric(\"");
+        String _name = m.getName();
+        _builder.append(_name);
+        _builder.append("\", ");
+        int _evaluate = this.evaluate(m.getExpression());
+        _builder.append(_evaluate);
+        _builder.append(")");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+
+  protected int _evaluate(final NumberLiteral literal) {
+    return literal.getValue();
+  }
+
+  protected int _evaluate(final Subtraction sub) {
+    final int left = this.evaluate(sub.getLeft());
+    final int right = this.evaluate(sub.getRight());
+    return (left - right);
+  }
+
+  protected int _evaluate(final Expression e) {
+    return 0;
+  }
+
   public CharSequence compileList(final StringList sl) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("[");
@@ -374,6 +442,8 @@ public class ResumeGenerator extends AbstractGenerator {
       return _compileSection((Interests)ed);
     } else if (ed instanceof Languages) {
       return _compileSection((Languages)ed);
+    } else if (ed instanceof Metrics) {
+      return _compileSection((Metrics)ed);
     } else if (ed instanceof Projects) {
       return _compileSection((Projects)ed);
     } else if (ed instanceof Skills) {
@@ -381,6 +451,20 @@ public class ResumeGenerator extends AbstractGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(ed).toString());
+    }
+  }
+
+  @XbaseGenerated
+  public int evaluate(final Expression literal) {
+    if (literal instanceof NumberLiteral) {
+      return _evaluate((NumberLiteral)literal);
+    } else if (literal instanceof Subtraction) {
+      return _evaluate((Subtraction)literal);
+    } else if (literal != null) {
+      return _evaluate(literal);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(literal).toString());
     }
   }
 }

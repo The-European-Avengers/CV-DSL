@@ -146,6 +146,21 @@ public class ResumeAdapterFactory extends AdapterFactoryImpl
         return createLanguagesAdapter();
       }
       @Override
+      public Adapter caseMetrics(Metrics object)
+      {
+        return createMetricsAdapter();
+      }
+      @Override
+      public Adapter caseMetric(Metric object)
+      {
+        return createMetricAdapter();
+      }
+      @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
+      }
+      @Override
       public Adapter caseCustomization(Customization object)
       {
         return createCustomizationAdapter();
@@ -171,9 +186,24 @@ public class ResumeAdapterFactory extends AdapterFactoryImpl
         return createTemporalFilterAdapter();
       }
       @Override
+      public Adapter caseAllFilter(AllFilter object)
+      {
+        return createAllFilterAdapter();
+      }
+      @Override
       public Adapter caseStringList(StringList object)
       {
         return createStringListAdapter();
+      }
+      @Override
+      public Adapter caseSubtraction(Subtraction object)
+      {
+        return createSubtractionAdapter();
+      }
+      @Override
+      public Adapter caseNumberLiteral(NumberLiteral object)
+      {
+        return createNumberLiteralAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -408,6 +438,51 @@ public class ResumeAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.resume.resume.Metrics <em>Metrics</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.resume.resume.Metrics
+   * @generated
+   */
+  public Adapter createMetricsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.resume.resume.Metric <em>Metric</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.resume.resume.Metric
+   * @generated
+   */
+  public Adapter createMetricAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.resume.resume.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.resume.resume.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.resume.resume.Customization <em>Customization</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -483,6 +558,21 @@ public class ResumeAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.resume.resume.AllFilter <em>All Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.resume.resume.AllFilter
+   * @generated
+   */
+  public Adapter createAllFilterAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.resume.resume.StringList <em>String List</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -493,6 +583,36 @@ public class ResumeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStringListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.resume.resume.Subtraction <em>Subtraction</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.resume.resume.Subtraction
+   * @generated
+   */
+  public Adapter createSubtractionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.resume.resume.NumberLiteral <em>Number Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.resume.resume.NumberLiteral
+   * @generated
+   */
+  public Adapter createNumberLiteralAdapter()
   {
     return null;
   }

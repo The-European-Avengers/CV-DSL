@@ -13,6 +13,7 @@
       <genEnumLiterals ecoreEnumLiteral="Resume.ecore#//SectionType/SKILLS"/>
       <genEnumLiterals ecoreEnumLiteral="Resume.ecore#//SectionType/INTERESTS"/>
       <genEnumLiterals ecoreEnumLiteral="Resume.ecore#//SectionType/LANGUAGES"/>
+      <genEnumLiterals ecoreEnumLiteral="Resume.ecore#//SectionType/METRICS"/>
     </genEnums>
     <genClasses ecoreClass="Resume.ecore#//Profile">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resume.ecore#//Profile/metadata"/>
@@ -80,6 +81,14 @@
     <genClasses ecoreClass="Resume.ecore#//Languages">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resume.ecore#//Languages/tags"/>
     </genClasses>
+    <genClasses ecoreClass="Resume.ecore#//Metrics">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resume.ecore#//Metrics/metrics"/>
+    </genClasses>
+    <genClasses ecoreClass="Resume.ecore#//Metric">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resume.ecore#//Metric/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resume.ecore#//Metric/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Resume.ecore#//Expression"/>
     <genClasses ecoreClass="Resume.ecore#//Customization">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resume.ecore#//Customization/language"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resume.ecore#//Customization/rules"/>
@@ -96,8 +105,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resume.ecore#//TemporalFilter/startDate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resume.ecore#//TemporalFilter/endDate"/>
     </genClasses>
+    <genClasses ecoreClass="Resume.ecore#//AllFilter"/>
     <genClasses ecoreClass="Resume.ecore#//StringList">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resume.ecore#//StringList/values"/>
+    </genClasses>
+    <genClasses ecoreClass="Resume.ecore#//Subtraction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resume.ecore#//Subtraction/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resume.ecore#//Subtraction/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Resume.ecore#//NumberLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resume.ecore#//NumberLiteral/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

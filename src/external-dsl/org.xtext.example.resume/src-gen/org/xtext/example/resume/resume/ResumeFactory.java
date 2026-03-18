@@ -150,6 +150,33 @@ public interface ResumeFactory extends EFactory
   Languages createLanguages();
 
   /**
+   * Returns a new object of class '<em>Metrics</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Metrics</em>'.
+   * @generated
+   */
+  Metrics createMetrics();
+
+  /**
+   * Returns a new object of class '<em>Metric</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Metric</em>'.
+   * @generated
+   */
+  Metric createMetric();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
    * Returns a new object of class '<em>Customization</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -195,6 +222,15 @@ public interface ResumeFactory extends EFactory
   TemporalFilter createTemporalFilter();
 
   /**
+   * Returns a new object of class '<em>All Filter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>All Filter</em>'.
+   * @generated
+   */
+  AllFilter createAllFilter();
+
+  /**
    * Returns a new object of class '<em>String List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -202,6 +238,24 @@ public interface ResumeFactory extends EFactory
    * @generated
    */
   StringList createStringList();
+
+  /**
+   * Returns a new object of class '<em>Subtraction</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Subtraction</em>'.
+   * @generated
+   */
+  Subtraction createSubtraction();
+
+  /**
+   * Returns a new object of class '<em>Number Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Number Literal</em>'.
+   * @generated
+   */
+  NumberLiteral createNumberLiteral();
 
   /**
    * Returns the package supported by this factory.

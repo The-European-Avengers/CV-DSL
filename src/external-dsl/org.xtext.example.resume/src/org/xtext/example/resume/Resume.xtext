@@ -18,7 +18,7 @@ Userdata:
 ;
 
 Section:
-    Experience | Projects | Education | Skills | Interests | Languages
+    Experience | Projects | Education | Skills | Interests | Languages | Metrics
 ;
 
 Experience:
@@ -74,6 +74,30 @@ Languages:
     'Languages' 'language:' language=STRING 'tags:' tags=StringList
 ;
 
+
+Metrics:
+    'Metrics' 'language:' language=STRING metrics+=Metric+
+;
+
+Metric:
+    'Metric' name=STRING '=' expression=Expression
+;
+
+
+Expression:
+    Subtraction
+;
+
+Subtraction returns Expression:
+    NumberLiteral (
+        {Subtraction.left=current} '-' right=NumberLiteral
+    )*
+;
+
+NumberLiteral returns Expression:
+    {NumberLiteral} value=INT
+;
+
 Customization:
     'Customization' 'include' 'Profile' 'where' 'language' language=STRING rules+=Rule*
 ;
@@ -88,11 +112,13 @@ enum SectionType:
     EDUCATION='Education' | 
     SKILLS='Skills' | 
     INTERESTS='Interests' | 
-    LANGUAGES='Languages'
+    LANGUAGES='Languages' |
+    METRICS='Metrics'
 ;
 
+
 Filter:
-    GeneralFilter | TemporalFilter
+    GeneralFilter | TemporalFilter | AllFilter
 ;
 
 GeneralFilter:
@@ -101,6 +127,10 @@ GeneralFilter:
 
 TemporalFilter:
     ('startDate' 'after' startDate=Date) | ('endDate' 'before' endDate=Date)
+;
+
+AllFilter:
+    {AllFilter} 'all'
 ;
 
 StringList:

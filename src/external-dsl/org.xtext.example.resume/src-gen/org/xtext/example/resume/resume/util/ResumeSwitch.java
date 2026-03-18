@@ -177,6 +177,28 @@ public class ResumeSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResumePackage.METRICS:
+      {
+        Metrics metrics = (Metrics)theEObject;
+        T result = caseMetrics(metrics);
+        if (result == null) result = caseSection(metrics);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ResumePackage.METRIC:
+      {
+        Metric metric = (Metric)theEObject;
+        T result = caseMetric(metric);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ResumePackage.EXPRESSION:
+      {
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResumePackage.CUSTOMIZATION:
       {
         Customization customization = (Customization)theEObject;
@@ -214,10 +236,34 @@ public class ResumeSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResumePackage.ALL_FILTER:
+      {
+        AllFilter allFilter = (AllFilter)theEObject;
+        T result = caseAllFilter(allFilter);
+        if (result == null) result = caseFilter(allFilter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResumePackage.STRING_LIST:
       {
         StringList stringList = (StringList)theEObject;
         T result = caseStringList(stringList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ResumePackage.SUBTRACTION:
+      {
+        Subtraction subtraction = (Subtraction)theEObject;
+        T result = caseSubtraction(subtraction);
+        if (result == null) result = caseExpression(subtraction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ResumePackage.NUMBER_LITERAL:
+      {
+        NumberLiteral numberLiteral = (NumberLiteral)theEObject;
+        T result = caseNumberLiteral(numberLiteral);
+        if (result == null) result = caseExpression(numberLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -450,6 +496,54 @@ public class ResumeSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Metrics</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Metrics</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMetrics(Metrics object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Metric</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Metric</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMetric(Metric object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Customization</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -530,6 +624,22 @@ public class ResumeSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>All Filter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>All Filter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAllFilter(AllFilter object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>String List</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -541,6 +651,38 @@ public class ResumeSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStringList(StringList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Subtraction</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Subtraction</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubtraction(Subtraction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Number Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Number Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNumberLiteral(NumberLiteral object)
   {
     return null;
   }

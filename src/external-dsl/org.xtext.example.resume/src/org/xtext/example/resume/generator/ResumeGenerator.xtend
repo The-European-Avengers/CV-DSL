@@ -16,6 +16,12 @@ import org.xtext.example.resume.resume.Interests
 import org.xtext.example.resume.resume.Languages
 import org.xtext.example.resume.resume.StringList
 import org.xtext.example.resume.resume.GeneralFilter
+import org.xtext.example.resume.resume.TemporalFilter
+import org.xtext.example.resume.resume.AllFilter
+import org.xtext.example.resume.resume.NumberLiteral
+import org.xtext.example.resume.resume.Subtraction
+import org.xtext.example.resume.resume.Expression
+import org.xtext.example.resume.resume.Metrics
 
 /**
  * Generates code from your model files on save.
@@ -59,17 +65,31 @@ class ResumeGenerator extends AbstractGenerator {
        
        
        «IF p.customization !== null»
-       customizer = Customization(cv)
-       «FOR rule : p.customization.rules»
-           «IF rule.filter instanceof GeneralFilter»
-       customizer.add_filter("«rule.sectionType.literal»", "TAGS", "«(rule.filter as GeneralFilter).tag»")
-           «ENDIF»
-       «ENDFOR»
-       
-       «FOR rule : p.customization.rules»
-       customizer.add_filter("«rule.sectionType.literal»", "LANGUAGE", "«p.customization.language»")
-       «ENDFOR»
-       «ENDIF»
+          customizer = Customization(cv)
+              
+          # 1. El primer filtro define el lenguaje general del CV de forma única
+          customizer.add_filter("Profile", "LANGUAGE", "«p.customization.language»")
+          
+          # 2. Iteramos para incluir las secciones que se desean con los filtros definidos
+          «FOR rule : p.customization.rules»
+             «IF rule.filter instanceof GeneralFilter»
+customizer.add_filter("«rule.sectionType.literal»", "TAGS", "«(rule.filter as GeneralFilter).tag»")
+             «ENDIF»
+             «IF rule.filter instanceof TemporalFilter»
+«val tFilter = rule.filter as TemporalFilter»
+             «IF tFilter.startDate !== null»
+customizer.add_filter("«rule.sectionType.literal»", "TEMPORAL_AFTER", "«tFilter.startDate.replace("\"", "")»")
+             «ENDIF»
+             «IF tFilter.endDate !== null»
+customizer.add_filter("«rule.sectionType.literal»", "TEMPORAL_BEFORE", "«tFilter.endDate.replace("\"", "")»")
+             «ENDIF»
+             «ENDIF»
+  
+             «IF rule.filter instanceof AllFilter»
+customizer.add_filter("«rule.sectionType.literal»", "ALL", "None")
+             «ENDIF»
+          «ENDFOR»
+      «ENDIF»
        
        cv.build()
        '''
@@ -109,7 +129,30 @@ class ResumeGenerator extends AbstractGenerator {
         def dispatch compileSection(Languages lang) '''
             cv.add_languages("«lang.language»").add_languages(«lang.tags.compileList»)
         '''
-    
+        def dispatch compileSection(Metrics met) '''
+		    metrics = cv.add_metrics("«met.language»")
+		    «FOR m : met.metrics»
+		    metrics.add_metric("«m.name»", «evaluate(m.expression)»)
+		    «ENDFOR»
+		'''
+		
+		
+		def dispatch int evaluate(NumberLiteral literal) {
+		    return literal.value
+		}
+		
+		
+		def dispatch int evaluate(Subtraction sub) {
+		    val left = evaluate(sub.left)
+		    val right = evaluate(sub.right)
+		    return left - right
+		}
+		
+		
+		def dispatch int evaluate(Expression e) {
+		    return 0
+		}
+        
         def compileList(StringList sl) '''[«IF sl !== null»«FOR v : sl.values SEPARATOR ', '»"«v»"«ENDFOR»«ENDIF»]'''
 	
 

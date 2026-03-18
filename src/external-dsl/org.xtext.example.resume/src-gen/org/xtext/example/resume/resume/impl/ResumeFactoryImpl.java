@@ -80,12 +80,18 @@ public class ResumeFactoryImpl extends EFactoryImpl implements ResumeFactory
       case ResumePackage.SKILL: return createSkill();
       case ResumePackage.INTERESTS: return createInterests();
       case ResumePackage.LANGUAGES: return createLanguages();
+      case ResumePackage.METRICS: return createMetrics();
+      case ResumePackage.METRIC: return createMetric();
+      case ResumePackage.EXPRESSION: return createExpression();
       case ResumePackage.CUSTOMIZATION: return createCustomization();
       case ResumePackage.RULE: return createRule();
       case ResumePackage.FILTER: return createFilter();
       case ResumePackage.GENERAL_FILTER: return createGeneralFilter();
       case ResumePackage.TEMPORAL_FILTER: return createTemporalFilter();
+      case ResumePackage.ALL_FILTER: return createAllFilter();
       case ResumePackage.STRING_LIST: return createStringList();
+      case ResumePackage.SUBTRACTION: return createSubtraction();
+      case ResumePackage.NUMBER_LITERAL: return createNumberLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -299,6 +305,42 @@ public class ResumeFactoryImpl extends EFactoryImpl implements ResumeFactory
    * @generated
    */
   @Override
+  public Metrics createMetrics()
+  {
+    MetricsImpl metrics = new MetricsImpl();
+    return metrics;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Metric createMetric()
+  {
+    MetricImpl metric = new MetricImpl();
+    return metric;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Customization createCustomization()
   {
     CustomizationImpl customization = new CustomizationImpl();
@@ -359,10 +401,46 @@ public class ResumeFactoryImpl extends EFactoryImpl implements ResumeFactory
    * @generated
    */
   @Override
+  public AllFilter createAllFilter()
+  {
+    AllFilterImpl allFilter = new AllFilterImpl();
+    return allFilter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public StringList createStringList()
   {
     StringListImpl stringList = new StringListImpl();
     return stringList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Subtraction createSubtraction()
+  {
+    SubtractionImpl subtraction = new SubtractionImpl();
+    return subtraction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NumberLiteral createNumberLiteral()
+  {
+    NumberLiteralImpl numberLiteral = new NumberLiteralImpl();
+    return numberLiteral;
   }
 
   /**

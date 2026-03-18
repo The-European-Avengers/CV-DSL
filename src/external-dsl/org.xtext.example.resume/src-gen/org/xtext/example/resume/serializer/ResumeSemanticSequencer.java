@@ -14,6 +14,7 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.xtext.example.resume.resume.AllFilter;
 import org.xtext.example.resume.resume.Customization;
 import org.xtext.example.resume.resume.Degree;
 import org.xtext.example.resume.resume.Education;
@@ -23,6 +24,9 @@ import org.xtext.example.resume.resume.Interests;
 import org.xtext.example.resume.resume.Job;
 import org.xtext.example.resume.resume.Languages;
 import org.xtext.example.resume.resume.Metadata;
+import org.xtext.example.resume.resume.Metric;
+import org.xtext.example.resume.resume.Metrics;
+import org.xtext.example.resume.resume.NumberLiteral;
 import org.xtext.example.resume.resume.Profile;
 import org.xtext.example.resume.resume.Project;
 import org.xtext.example.resume.resume.Projects;
@@ -31,6 +35,7 @@ import org.xtext.example.resume.resume.Rule;
 import org.xtext.example.resume.resume.Skill;
 import org.xtext.example.resume.resume.Skills;
 import org.xtext.example.resume.resume.StringList;
+import org.xtext.example.resume.resume.Subtraction;
 import org.xtext.example.resume.resume.TemporalFilter;
 import org.xtext.example.resume.resume.Userdata;
 import org.xtext.example.resume.services.ResumeGrammarAccess;
@@ -49,6 +54,9 @@ public class ResumeSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == ResumePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case ResumePackage.ALL_FILTER:
+				sequence_AllFilter(context, (AllFilter) semanticObject); 
+				return; 
 			case ResumePackage.CUSTOMIZATION:
 				sequence_Customization(context, (Customization) semanticObject); 
 				return; 
@@ -76,6 +84,15 @@ public class ResumeSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case ResumePackage.METADATA:
 				sequence_Metadata(context, (Metadata) semanticObject); 
 				return; 
+			case ResumePackage.METRIC:
+				sequence_Metric(context, (Metric) semanticObject); 
+				return; 
+			case ResumePackage.METRICS:
+				sequence_Metrics(context, (Metrics) semanticObject); 
+				return; 
+			case ResumePackage.NUMBER_LITERAL:
+				sequence_NumberLiteral(context, (NumberLiteral) semanticObject); 
+				return; 
 			case ResumePackage.PROFILE:
 				sequence_Profile(context, (Profile) semanticObject); 
 				return; 
@@ -97,6 +114,9 @@ public class ResumeSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case ResumePackage.STRING_LIST:
 				sequence_StringList(context, (StringList) semanticObject); 
 				return; 
+			case ResumePackage.SUBTRACTION:
+				sequence_Subtraction(context, (Subtraction) semanticObject); 
+				return; 
 			case ResumePackage.TEMPORAL_FILTER:
 				sequence_TemporalFilter(context, (TemporalFilter) semanticObject); 
 				return; 
@@ -107,6 +127,21 @@ public class ResumeSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Filter returns AllFilter
+	 *     AllFilter returns AllFilter
+	 *
+	 * Constraint:
+	 *     {AllFilter}
+	 * </pre>
+	 */
+	protected void sequence_AllFilter(ISerializationContext context, AllFilter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * <pre>
@@ -324,6 +359,67 @@ public class ResumeSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Metric returns Metric
+	 *
+	 * Constraint:
+	 *     (name=STRING expression=Expression)
+	 * </pre>
+	 */
+	protected void sequence_Metric(ISerializationContext context, Metric semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResumePackage.Literals.METRIC__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResumePackage.Literals.METRIC__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResumePackage.Literals.METRIC__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResumePackage.Literals.METRIC__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMetricAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getMetricAccess().getExpressionExpressionParserRuleCall_3_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Section returns Metrics
+	 *     Metrics returns Metrics
+	 *
+	 * Constraint:
+	 *     (language=STRING metrics+=Metric+)
+	 * </pre>
+	 */
+	protected void sequence_Metrics(ISerializationContext context, Metrics semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns NumberLiteral
+	 *     Subtraction returns NumberLiteral
+	 *     Subtraction.Subtraction_1_0 returns NumberLiteral
+	 *     NumberLiteral returns NumberLiteral
+	 *
+	 * Constraint:
+	 *     value=INT
+	 * </pre>
+	 */
+	protected void sequence_NumberLiteral(ISerializationContext context, NumberLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResumePackage.Literals.NUMBER_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResumePackage.Literals.NUMBER_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getNumberLiteralAccess().getValueINTTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Profile returns Profile
 	 *
 	 * Constraint:
@@ -454,6 +550,31 @@ public class ResumeSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 */
 	protected void sequence_StringList(ISerializationContext context, StringList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns Subtraction
+	 *     Subtraction returns Subtraction
+	 *     Subtraction.Subtraction_1_0 returns Subtraction
+	 *
+	 * Constraint:
+	 *     (left=Subtraction_Subtraction_1_0 right=NumberLiteral)
+	 * </pre>
+	 */
+	protected void sequence_Subtraction(ISerializationContext context, Subtraction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResumePackage.Literals.SUBTRACTION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResumePackage.Literals.SUBTRACTION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, ResumePackage.Literals.SUBTRACTION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResumePackage.Literals.SUBTRACTION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSubtractionAccess().getSubtractionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getSubtractionAccess().getRightNumberLiteralParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
